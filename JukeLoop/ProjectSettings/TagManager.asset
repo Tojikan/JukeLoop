@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Beat
+  - BG
   layers:
   - Default
   - TransparentFX
