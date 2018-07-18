@@ -15,10 +15,11 @@ public static class CurrentTrackInfo
         get { return bpm; }
     }
     private static float secondPerBeat;                         //get seconds per beat. Should be calculated when we set the BPM
-    public static float SecondPerBeat
+    public static float SecondPerBeat                           //read property
     {
         get { return secondPerBeat; }
-    }                       //read property
+    }
+    public static int beatIncrements;                           //the denominator portion to divid second per beat. Sets the smallest increment in which to increase our timer. 
 
 
     //sets the bpm for the track
