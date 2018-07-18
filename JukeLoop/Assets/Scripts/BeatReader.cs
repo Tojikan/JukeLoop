@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using BeatBoundEngine;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,20 +12,21 @@ public class BeatReader : MonoBehaviour
     {
         if (collision.transform.tag == "Beat")
         {
-            BeatNote beatData = collision.gameObject.GetComponent<BeatNote>();
+            Beat beatData= collision.gameObject.GetComponent<BeatNote>().beatData; 
             PlayAudio(beatData, true);
         }
 
         if (collision.transform.tag == "BG")
         {
-            BeatNote beatData = collision.gameObject.GetComponent<BeatNote>();
+            Beat beatData = collision.gameObject.GetComponent<BeatNote>().beatData;
             PlayAudio(beatData, false);
         }
     }
 
+
     //plays a given track
-    private void PlayAudio(BeatNote data, bool isBeat)
+    private void PlayAudio(Beat data, bool isBeat)
     {
-        audioPlayer.ReceiveSound(data.audioTrack, isBeat);
+        audioPlayer.ReceiveSound(data.audio, isBeat);
     }
 }

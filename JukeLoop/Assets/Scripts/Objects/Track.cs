@@ -11,6 +11,7 @@ using UnityEngine;
 
 namespace BeatBoundEngine
 {
+    [System.Serializable]
     public class Track
     {
         public List<Loop> loopList;                     //list of loops

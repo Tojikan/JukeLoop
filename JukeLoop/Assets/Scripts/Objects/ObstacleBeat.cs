@@ -7,8 +7,9 @@ using UnityEngine;
  * */
 namespace BeatBoundEngine
 {
+    [System.Serializable]
     public class ObstacleBeat : Beat
     {
-        public int[][] ObstacleArray = new int[9][];               //array of obstacles. first index is for board positions, second index is for which explosion to spawn
+        public int[] obstacles = new int[9];                        //pattern of obstacles. The index determines which square and the int determines which explosion prefab to spawn
     }
 }

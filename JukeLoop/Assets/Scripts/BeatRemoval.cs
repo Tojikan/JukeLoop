@@ -17,10 +17,4 @@ public class BeatRemoval : MonoBehaviour
     {
         endPosition = new Vector3(transform.position.x, bottomLine.transform.position.y, 1);
     }
-
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Destroy(collision.gameObject);
-    }
 }

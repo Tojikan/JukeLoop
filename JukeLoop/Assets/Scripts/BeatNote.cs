@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using BeatBoundEngine;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,15 +11,22 @@ using UnityEngine;
 
 public class BeatNote : MonoBehaviour
 {
-    public AudioClip audioTrack;                                //set the clip that the note plays
-    public int[] obstacleArray = new int[9];                    //stores the obstacle grid
+    public Beat beatData;
+    public Vector3 startPosition;
 
     //move the note on spawn
     private void Start()
     {
-        StartCoroutine("MoveNote");
+        LoopTimer.TimerEventHandler += TriggerBeat;
     }
 
+    void TriggerBeat(int time)
+    {
+        if (time == beatData.triggerNote)
+        {
+            StartCoroutine("MoveNote");
+        }
+    }
 
     //moves the note by using linear interpolation
     private IEnumerator MoveNote()
@@ -30,10 +38,24 @@ public class BeatNote : MonoBehaviour
         //while loop to move
         while (i < 1.0)
         {
-            //we divided delta time by 2 in order to slow down the default rate
+            //we divided 
             i += (Time.deltaTime/2) * rate;
-            transform.position = Vector3.Lerp(BeatSpawner.SpawnPosition, BeatRemoval.EndPosition, i);
+            transform.position = Vector3.Lerp(startPosition, BeatRemoval.EndPosition, i);
             yield return null;
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Removal")
+        {
+            StopAllCoroutines();
+            transform.position = startPosition;
+        }
+    }
+
+    private void OnDisable()
+    {
+        LoopTimer.TimerEventHandler -= TriggerBeat;
     }
 }

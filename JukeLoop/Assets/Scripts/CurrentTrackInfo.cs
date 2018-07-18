@@ -19,13 +19,13 @@ public static class CurrentTrackInfo
     {
         get { return secondPerBeat; }
     }
-    public static int beatIncrements;                           //the denominator portion to divid second per beat. Sets the smallest increment in which to increase our timer. 
+    public static int beatIncrements;                           //the denominator portion to divid second per beat. Sets the smallest increment in which to increase our timer. 3
 
 
     //sets the bpm for the track
     public static void SetBPM(int beat)
     {
         bpm = beat;
-        secondPerBeat =(60.0f / (float)beat);
+        secondPerBeat = (60.0f / beat);
     }
 }

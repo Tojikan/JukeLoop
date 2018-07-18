@@ -3,36 +3,50 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Looper : MonoBehaviour
+public class LoopTimer : MonoBehaviour
 {
     public int loopTime;                              //current time of the timer
-    const float maxTime = 30000000;                     //set a maximum so we don't have a float overflow
+    public int loopLength;                            //length of the current loop                    
 
-    public delegate void TimerEvent(float time);
+    public delegate void TimerEvent(int time);
     public static event TimerEvent TimerEventHandler;
 
-    // Use this for initialization
-    void Start()
-    {
 
+
+    //Start timer. Pass in a parameter of the length of the loop
+    public void StartTimer(int length)
+    {
+        loopLength = length;
+        StartCoroutine("TimerRoutine");
     }
 
-    // Update is called once per frame
-    void Update()
+    //Stop timer
+    public void StopTimer()
     {
-
+        StopAllCoroutines();
     }
 
+    //Reset timer
+    public void ResetTimer()
+    {
+        loopTime = 0;
+    }
+
+    //timer
     IEnumerator TimerRoutine()
     {
         loopTime = 0;
-        float increment =  CurrentTrackInfo.SecondPerBeat / (float)CurrentTrackInfo.beatIncrements;
+        
+        //get the time increment between notes. Based on the bpm and the lowest increment (such as 16th note or 8th note)
+        float increment =  CurrentTrackInfo.SecondPerBeat / CurrentTrackInfo.beatIncrements;
         while (true)
         {
+            //make sure something is subscribed
             if (TimerEventHandler != null)
                 TimerEventHandler(loopTime);
 
-            if (loopTime > maxTime)
+            //reset 
+            if (loopTime > loopLength)
                 ResetTimer();
 
             loopTime += 1;
@@ -41,8 +55,10 @@ public class Looper : MonoBehaviour
         }
     }
 
-    private void ResetTimer()
+    //make sure timer is stopped if this becomes disabled
+    void OnDisable()
     {
-        loopTime = 0;
+        StopTimer();
     }
+
 }

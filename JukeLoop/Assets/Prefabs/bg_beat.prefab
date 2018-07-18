@@ -90,9 +90,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e31c908ca96a9144b8793fe666d569cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioTrack: {fileID: 0}
-  obstacleArray: 000000000000000000000000000000000000000000000000000000000000000000000000
-  isBG: 0
+  beatData:
+    triggerNote: 0
+    audio: {fileID: 0}
+  startPostion: {x: 0, y: 0, z: 0}
 --- !u!61 &3771797805886913528
 BoxCollider2D:
   m_ObjectHideFlags: 0

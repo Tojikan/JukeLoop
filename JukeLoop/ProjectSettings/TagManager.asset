@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Beat
   - BG
+  - Removal
   layers:
   - Default
   - TransparentFX
