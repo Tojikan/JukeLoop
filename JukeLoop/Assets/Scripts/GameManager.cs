@@ -18,15 +18,15 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         timer = GetComponent<LoopTimer>();
+        CurrentTrackInfo.SetBPM(beat);
+        spawner.ReceiveBeats(testLoop.bgBeats);
+        CurrentTrackInfo.beatIncrements = noteIncrements;
     }
 
 
     // Use this for initialization
     void Start()
     {
-        CurrentTrackInfo.SetBPM(beat);
-        spawner.ReceiveBeats(testLoop.bgBeats);
-        CurrentTrackInfo.beatIncrements = noteIncrements;
         timer.StartTimer(testLoop.loopLength);
     }
 }

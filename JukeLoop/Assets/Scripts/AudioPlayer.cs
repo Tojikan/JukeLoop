@@ -39,9 +39,12 @@ public class AudioPlayer : MonoBehaviour
 
         //if no available players, default to the first one.
         if (audio == null)
+        {
             audio = audioPlayers[0];
+            audio.Stop();
+        }
 
-        audio.PlayOneShot(clip);
+        audio.PlayOneShot(clip);  
     }
 
 
@@ -62,7 +65,10 @@ public class AudioPlayer : MonoBehaviour
 
         //if no available players, default to the first one.
         if (audio == null)
-            audio = bgPlayers[0];
+        {
+            audio = audioPlayers[0];
+            audio.Stop();
+        }
 
         audio.PlayOneShot(clip);
     }

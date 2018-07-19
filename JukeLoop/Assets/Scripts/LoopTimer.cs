@@ -36,20 +36,21 @@ public class LoopTimer : MonoBehaviour
     IEnumerator TimerRoutine()
     {
         loopTime = 0;
-        
+
         //get the time increment between notes. Based on the bpm and the lowest increment (such as 16th note or 8th note)
         float increment =  CurrentTrackInfo.SecondPerBeat / CurrentTrackInfo.beatIncrements;
         while (true)
         {
             //make sure something is subscribed
             if (TimerEventHandler != null)
+            {
                 TimerEventHandler(loopTime);
+            }          
+            loopTime += 1;
 
             //reset 
             if (loopTime > loopLength)
                 ResetTimer();
-
-            loopTime += 1;
             yield return new WaitForSeconds(increment);
 
         }

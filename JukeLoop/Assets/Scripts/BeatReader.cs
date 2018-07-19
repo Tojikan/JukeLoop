@@ -21,6 +21,7 @@ public class BeatReader : MonoBehaviour
             Beat beatData = collision.gameObject.GetComponent<BeatNote>().beatData;
             PlayAudio(beatData, false);
         }
+
     }
 
 
