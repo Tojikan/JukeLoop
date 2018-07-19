@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 2553514004405601897}
   - component: {fileID: 8165991518291506280}
   - component: {fileID: 8964636763944487568}
-  - component: {fileID: 3291148418823907405}
+  - component: {fileID: 6672603755177842902}
+  - component: {fileID: 4726267063808073622}
   m_Layer: 0
   m_Name: Beat
   m_TagString: Beat
@@ -77,16 +78,46 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &3291148418823907405
-BoxCollider:
+--- !u!114 &6672603755177842902
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1449601747606357677}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edf392d9ee310054ebb960b985fcd842, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beatData:
+    triggerNote: 0
+    audio: {fileID: 0}
+  startPosition: {x: 0, y: 0, z: 0}
+  ObstacleArray: 000000000000000000000000000000000000000000000000000000000000000000000000
+--- !u!61 &4726267063808073622
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449601747606357677}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0

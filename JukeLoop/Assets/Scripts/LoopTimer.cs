@@ -3,11 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/** Handles the timing and rhythm. Runs a coroutine which counts up from 0 to a loop length based on the given length of the loop
+ * Timing waits a time based on the Second per beat divided by the beatIncrement (the smallest time signature for this song)
+ * Then will increment an int variable by 1. Each 1 represents a single beat increment
+ * This is run through the event.
+ * */
 public class LoopTimer : MonoBehaviour
 {
     public int loopTime;                              //current time of the timer
     public int loopLength;                            //length of the current loop                    
 
+
+    //Timer Event and Delegate
     public delegate void TimerEvent(int time);
     public static event TimerEvent TimerEventHandler;
 

@@ -14,6 +14,6 @@ namespace BeatBoundEngine
         public Beat[] bgBeats;                          //beats to be played for background
         public ObstacleBeat[] obsBeats;                 //obstacle beats to be dodged
         public int numOfBeats;                          //to be calculated when loop is loaded into game.
-        public int loopLength;
+        public int loopLength;                          //the length of the loop in note increments
     }
 }

@@ -6,28 +6,29 @@ using UnityEngine;
 
 
 /**Spawns notes. 
- * TO DO: Everything
+ * Has two spawning functions. One receives for BG notes and one receives or obstacle notes. 
  * **/
 public class BeatSpawner : MonoBehaviour
 {
-    public GameObject bgNote;                                   //drag in the bg Note prefab for instantiating
-    private Beat[] beatArray;
+    public GameObject notePrefab;                                   //drag in the bg Note prefab for instantiating
 
 
-    public void ReceiveBeats(Beat[] beats)
+    public void SetBG(Beat[] beats)
     {
-        beatArray = beats;
-        SpawnBeat();
-    }
-
-    private void SpawnBeat()
-    {
-        foreach (Beat beat in beatArray)
+        foreach (Beat beat in beats)
         {
-            GameObject newBeat = Instantiate(bgNote, transform.position, Quaternion.identity);
-            BeatNote newBeatData = newBeat.GetComponent<BeatNote>();
-            newBeatData.beatData = beat;
-            newBeatData.startPosition = transform.position;
+            GameObject newBeat = Instantiate(notePrefab, transform.position, Quaternion.identity);
+            newBeat.GetComponent<BeatNote>().SetBeatData(beat, transform.position);
         }
     }
+
+    public void SetNotes(ObstacleBeat[] beats)
+    {
+        foreach (ObstacleBeat beat in beats)
+        {
+            GameObject newBeat = Instantiate(notePrefab, transform.position, Quaternion.identity);
+            newBeat.GetComponent<ObstacleNote>().SetObstacleBeatData(beat, transform.position);
+        }
+    }
+
 }
